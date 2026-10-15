@@ -1,0 +1,147 @@
+{
+  "created_at_utc": "2026-10-15T13:27:55.298499+00:00",
+  "test_set": "development_v1",
+  "planned_cases": 8,
+  "grading": "Human answer review plus automatic route check",
+  "results": [
+    {
+      "id": 1,
+      "question": "Which documents are required for a personal loan?",
+      "expected_operation": "policy",
+      "criteria": "Lists national ID, income proof for the last three months, and residential address proof. Cites personal_loan.md chunk 1.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "Policy information:\nTo apply for a personal loan, applicants must provide the following documents:\n- A valid national ID [personal_loan.md, chunk 1].\n- Proof of income covering the last three months [personal_loan.md, chunk 1].\n- Proof of residential address [personal_loan.md, chunk 1].",
+        "operation": "policy",
+        "elapsed_seconds": 5.81
+      },
+      "client_elapsed_seconds": 5.829
+    },
+    {
+      "id": 2,
+      "question": "Does motor insurance cover mechanical breakdown?",
+      "expected_operation": "policy",
+      "criteria": "Says mechanical breakdown is excluded. Cites motor_insurance.md chunk 1.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "Policy information:\nMotor insurance does not cover mechanical breakdown, as it is listed under the policy exclusions [motor_insurance.md, chunk 1].",
+        "operation": "policy",
+        "elapsed_seconds": 10.49
+      },
+      "client_elapsed_seconds": 10.488
+    },
+    {
+      "id": 3,
+      "question": "How quickly will my complaint be acknowledged and resolved?",
+      "expected_operation": "policy",
+      "criteria": "Acknowledgment: two business days. Resolution: target of ten business days, with complex cases potentially taking longer. Cites customer_support.md chunks 2 and 3 appropriately.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "Policy information:\nBased on the provided documents, complaints are acknowledged within two business days [customer_support.md, chunk 2]. The target resolution time is ten business days, though complex cases may take longer [customer_support.md, chunk 3]. Acknowledgment confirms receipt and does not mean the issue is resolved [customer_support.md, chunk 2].",
+        "operation": "policy",
+        "elapsed_seconds": 10.46
+      },
+      "client_elapsed_seconds": 10.463
+    },
+    {
+      "id": 4,
+      "question": "What is the personal loan interest rate?",
+      "expected_operation": "policy",
+      "criteria": "Says the rate is not specified. Does not invent a rate. Any citation must point to personal_loan.md chunk 2.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "Policy information:\nThe provided documents do not specify this [personal_loan.md, chunk 2].",
+        "operation": "policy",
+        "elapsed_seconds": 10.64
+      },
+      "client_elapsed_seconds": 10.639
+    },
+    {
+      "id": 5,
+      "question": "Calculate payments for 100000 at an annual interest rate of 12% over 12 months.",
+      "expected_operation": "calculate",
+      "criteria": "Uses 100000, 12% annually, and 12 months. Monthly payment 8884.88, total repayment 106618.55, total interest 6618.55. States illustrative assumptions.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "Illustrative calculation\nLoan amount: 100,000.00\nAnnual interest rate: 12%\nRepayment period: 12 months\nMonthly payment: 8,884.88\nTotal repayment: 106,618.55\nTotal interest: 6,618.55\n\nAssumptions: Fixed nominal annual interest rate, equal monthly payments at the end of each month, and no fees. Illustrative estimate using a user-supplied rate. Actual lender rounding may differ.\nAmounts use the same currency as the entered loan amount. This calculation does not establish policy eligibility.",
+        "operation": "calculate",
+        "elapsed_seconds": 3.11
+      },
+      "client_elapsed_seconds": 3.111
+    },
+    {
+      "id": 6,
+      "question": "Calculate payments for 12000 at an annual interest rate of 0% over 12 months.",
+      "expected_operation": "calculate",
+      "criteria": "Monthly payment 1000.00, total repayment 12000.00, total interest 0.00. Does not treat zero as missing.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "Illustrative calculation\nLoan amount: 12,000.00\nAnnual interest rate: 0.0%\nRepayment period: 12 months\nMonthly payment: 1,000.00\nTotal repayment: 12,000.00\nTotal interest: 0.00\n\nAssumptions: Fixed nominal annual interest rate, equal monthly payments at the end of each month, and no fees. Illustrative estimate using a user-supplied rate. Actual lender rounding may differ.\nAmounts use the same currency as the entered loan amount. This calculation does not establish policy eligibility.",
+        "operation": "calculate",
+        "elapsed_seconds": 8.3
+      },
+      "client_elapsed_seconds": 8.31
+    },
+    {
+      "id": 7,
+      "question": "Calculate monthly payments for a loan of 100000.",
+      "expected_operation": "calculate",
+      "criteria": "Requests annual interest rate and repayment period. Does not invent inputs or produce a payment amount.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "To calculate the installments, please provide: annual interest rate (%), repayment period in months. Restate the full request with all inputs.",
+        "operation": "calculate",
+        "elapsed_seconds": 10.0
+      },
+      "client_elapsed_seconds": 10.0
+    },
+    {
+      "id": 8,
+      "question": "What repayment periods does the personal loan policy allow? Also calculate payments for 100000 at an annual interest rate of 12% over 24 months.",
+      "expected_operation": "both",
+      "criteria": "States 12 to 60 months with personal_loan.md chunk 2 citation. Calculation uses 100000, 12% annually, and 24 months: monthly 4707.35, total 112976.33, interest 12976.33. Does not describe 12% as an official policy rate.",
+      "request_ok": true,
+      "route_pass": true,
+      "answer_pass": true,
+      "overall_pass": true,
+      "response": {
+        "answer": "Policy information:\nThe available repayment periods for the personal loan range from 12 to 60 months [personal_loan.md, chunk 2].\n\nThe provided documents do not specify the interest rates or calculations for the requested loan amount.\n\nIllustrative calculation\nLoan amount: 100,000.00\nAnnual interest rate: 12%\nRepayment period: 24 months\nMonthly payment: 4,707.35\nTotal repayment: 112,976.33\nTotal interest: 12,976.33\n\nAssumptions: Fixed nominal annual interest rate, equal monthly payments at the end of each month, and no fees. Illustrative estimate using a user-supplied rate. Actual lender rounding may differ.\nAmounts use the same currency as the entered loan amount. This calculation does not establish policy eligibility.",
+        "operation": "both",
+        "elapsed_seconds": 9.63
+      },
+      "client_elapsed_seconds": 9.63,
+      "review_note": "Corrected accidental n selection after reviewing the answer against the criteria."
+    }
+  ],
+  "summary": {
+    "completed_cases": 8,
+    "route_passes": 8,
+    "human_answer_passes": 8,
+    "overall_passes": 8,
+    "overall_pass_rate_percent": 100.0,
+    "mean_client_seconds": 8.56,
+    "median_client_seconds": 9.82,
+    "max_client_seconds": 10.64
+  }
+}

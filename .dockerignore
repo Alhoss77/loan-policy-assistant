@@ -1,0 +1,10 @@
+.venv/
+.env
+.env.*
+.git/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+chroma_data/
+evaluation_results/
+.vscode/
